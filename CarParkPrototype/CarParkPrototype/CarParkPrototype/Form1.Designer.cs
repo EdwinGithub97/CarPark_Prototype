@@ -69,7 +69,6 @@
             this.btnPinEnter = new System.Windows.Forms.Button();
             this.btnPin0 = new System.Windows.Forms.Button();
             this.btnPinBack = new System.Windows.Forms.Button();
-            this.txtboxPin = new System.Windows.Forms.TextBox();
             this.btnPin9 = new System.Windows.Forms.Button();
             this.btnPin8 = new System.Windows.Forms.Button();
             this.btnPin7 = new System.Windows.Forms.Button();
@@ -79,6 +78,8 @@
             this.btnPin3 = new System.Windows.Forms.Button();
             this.btnPin2 = new System.Windows.Forms.Button();
             this.btnPin1 = new System.Windows.Forms.Button();
+            this.lblPin = new System.Windows.Forms.Label();
+            this.lblTest = new System.Windows.Forms.Label();
             this.grbxLeaving.SuspendLayout();
             this.grpbxFingerprint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictbxFingerprint)).BeginInit();
@@ -511,10 +512,10 @@
             // 
             // grbxPin
             // 
+            this.grbxPin.Controls.Add(this.lblPin);
             this.grbxPin.Controls.Add(this.btnPinEnter);
             this.grbxPin.Controls.Add(this.btnPin0);
             this.grbxPin.Controls.Add(this.btnPinBack);
-            this.grbxPin.Controls.Add(this.txtboxPin);
             this.grbxPin.Controls.Add(this.btnPin9);
             this.grbxPin.Controls.Add(this.btnPin8);
             this.grbxPin.Controls.Add(this.btnPin7);
@@ -540,6 +541,7 @@
             this.btnPinEnter.TabIndex = 22;
             this.btnPinEnter.Text = "Enter";
             this.btnPinEnter.UseVisualStyleBackColor = true;
+            this.btnPinEnter.Click += new System.EventHandler(this.btnPinEnter_Click);
             // 
             // btnPin0
             // 
@@ -549,6 +551,7 @@
             this.btnPin0.TabIndex = 26;
             this.btnPin0.Text = "0";
             this.btnPin0.UseVisualStyleBackColor = true;
+            this.btnPin0.Click += new System.EventHandler(this.btnPin0_Click);
             // 
             // btnPinBack
             // 
@@ -559,13 +562,6 @@
             this.btnPinBack.Text = "<-";
             this.btnPinBack.UseVisualStyleBackColor = true;
             // 
-            // txtboxPin
-            // 
-            this.txtboxPin.Location = new System.Drawing.Point(9, 45);
-            this.txtboxPin.Name = "txtboxPin";
-            this.txtboxPin.Size = new System.Drawing.Size(164, 20);
-            this.txtboxPin.TabIndex = 24;
-            // 
             // btnPin9
             // 
             this.btnPin9.Location = new System.Drawing.Point(100, 74);
@@ -574,6 +570,7 @@
             this.btnPin9.TabIndex = 23;
             this.btnPin9.Text = "9";
             this.btnPin9.UseVisualStyleBackColor = true;
+            this.btnPin9.Click += new System.EventHandler(this.btnPin9_Click);
             // 
             // btnPin8
             // 
@@ -583,6 +580,7 @@
             this.btnPin8.TabIndex = 4;
             this.btnPin8.Text = "8";
             this.btnPin8.UseVisualStyleBackColor = true;
+            this.btnPin8.Click += new System.EventHandler(this.btnPin8_Click);
             // 
             // btnPin7
             // 
@@ -592,6 +590,7 @@
             this.btnPin7.TabIndex = 4;
             this.btnPin7.Text = "7";
             this.btnPin7.UseVisualStyleBackColor = true;
+            this.btnPin7.Click += new System.EventHandler(this.btnPin7_Click);
             // 
             // btnPin6
             // 
@@ -601,6 +600,7 @@
             this.btnPin6.TabIndex = 4;
             this.btnPin6.Text = "6";
             this.btnPin6.UseVisualStyleBackColor = true;
+            this.btnPin6.Click += new System.EventHandler(this.btnPin6_Click);
             // 
             // btnPin5
             // 
@@ -610,6 +610,7 @@
             this.btnPin5.TabIndex = 4;
             this.btnPin5.Text = "5";
             this.btnPin5.UseVisualStyleBackColor = true;
+            this.btnPin5.Click += new System.EventHandler(this.btnPin5_Click);
             // 
             // btnPin4
             // 
@@ -619,6 +620,7 @@
             this.btnPin4.TabIndex = 4;
             this.btnPin4.Text = "4";
             this.btnPin4.UseVisualStyleBackColor = true;
+            this.btnPin4.Click += new System.EventHandler(this.btnPin4_Click);
             // 
             // btnPin3
             // 
@@ -628,6 +630,7 @@
             this.btnPin3.TabIndex = 4;
             this.btnPin3.Text = "3";
             this.btnPin3.UseVisualStyleBackColor = true;
+            this.btnPin3.Click += new System.EventHandler(this.btnPin3_Click);
             // 
             // btnPin2
             // 
@@ -637,6 +640,7 @@
             this.btnPin2.TabIndex = 4;
             this.btnPin2.Text = "2";
             this.btnPin2.UseVisualStyleBackColor = true;
+            this.btnPin2.Click += new System.EventHandler(this.btnPin2_Click);
             // 
             // btnPin1
             // 
@@ -646,12 +650,32 @@
             this.btnPin1.TabIndex = 22;
             this.btnPin1.Text = "1";
             this.btnPin1.UseVisualStyleBackColor = true;
+            this.btnPin1.Click += new System.EventHandler(this.btnPin1_Click);
+            // 
+            // lblPin
+            // 
+            this.lblPin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPin.Location = new System.Drawing.Point(15, 31);
+            this.lblPin.Name = "lblPin";
+            this.lblPin.Size = new System.Drawing.Size(158, 29);
+            this.lblPin.TabIndex = 27;
+            this.lblPin.Text = "Please Enter Your Pin:";
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(739, 446);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(28, 13);
+            this.lblTest.TabIndex = 28;
+            this.lblTest.Text = "Test";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1443, 686);
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.grbxPin);
             this.Controls.Add(this.grbxFloor2);
             this.Controls.Add(this.grbxFloor1);
@@ -669,8 +693,8 @@
             this.grbxFloor1.ResumeLayout(false);
             this.grbxFloor2.ResumeLayout(false);
             this.grbxPin.ResumeLayout(false);
-            this.grbxPin.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -714,7 +738,6 @@
         private System.Windows.Forms.Button btnPinEnter;
         private System.Windows.Forms.Button btnPin0;
         private System.Windows.Forms.Button btnPinBack;
-        private System.Windows.Forms.TextBox txtboxPin;
         private System.Windows.Forms.Button btnPin9;
         private System.Windows.Forms.Button btnPin8;
         private System.Windows.Forms.Button btnPin7;
@@ -727,6 +750,8 @@
         private System.Windows.Forms.PictureBox pictbxFingerprint;
         private System.Windows.Forms.Button btnFloor1Confirm;
         private System.Windows.Forms.Button btnFloor2Confirm;
+        private System.Windows.Forms.Label lblPin;
+        private System.Windows.Forms.Label lblTest;
     }
 }
 

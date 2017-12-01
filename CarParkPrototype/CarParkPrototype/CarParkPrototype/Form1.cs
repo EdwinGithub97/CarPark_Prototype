@@ -18,6 +18,7 @@ namespace CarParkPrototype
         private bool[] floor1 = { true, true, true, true, true, true, true, true };
         private bool[] floor2 = { true, true, true, true, true, true, true, true };
 
+
         public Form1()
         {
             InitializeComponent();
@@ -402,6 +403,127 @@ namespace CarParkPrototype
         private void btnPasscode_Click(object sender, EventArgs e)
         {
             grbxPin.Visible = true;
+        }
+
+
+
+
+
+        private void btnPin1_Click(object sender, EventArgs e)
+        {
+         
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+            
+            lblPin.Text += "1";
+
+
+            lblPin.Text = Keypad.btnPin1();
+
+        }
+
+        private void btnPin2_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "2";
+        }
+
+        private void btnPin3_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "3";
+        }
+
+        private void btnPin4_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "4";
+        }
+
+        private void btnPin5_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "5";
+        }
+
+        private void btnPin6_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "6";
+        }
+
+        private void btnPin7_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "7";
+        }
+
+        private void btnPin8_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "8";
+        }
+
+        private void btnPin9_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "9";
+        }
+
+        private void btnPin0_Click(object sender, EventArgs e)
+        {
+            if (lblPin.Text == "Please Enter Your Pin:")
+            {
+                lblPin.Text = "";
+            }
+
+            lblPin.Text += "0";
+        }
+
+        private void btnPinEnter_Click(object sender, EventArgs e)
+        {
+            int pass = Convert.ToInt32(lblPin.Text);
+
+            lblTest.Text = Convert.ToString(pass);
+
+            
+
+
+
         }
     }
 }
