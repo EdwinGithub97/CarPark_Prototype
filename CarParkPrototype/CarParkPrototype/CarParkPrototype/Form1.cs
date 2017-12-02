@@ -17,13 +17,14 @@ namespace CarParkPrototype
         private int parkingSpace;
         private bool[] floor1 = { true, true, true, true, true, true, true, true };
         private bool[] floor2 = { true, true, true, true, true, true, true, true };
+        int butno, passPark1;
 
 
         public Form1()
         {
             InitializeComponent();
             Reset();
-            enterLeave = false;
+            enterLeave = true;
             parkingSpace = 0;
 
         }
@@ -37,22 +38,14 @@ namespace CarParkPrototype
 
         private void btnArriveAtCarPark_Click(object sender, EventArgs e)
         {
-            btnCoinReceived.Visible = true;
             btnArriveAtCarPark.Visible = false;
+            btnSelectSpace.Visible = true;
         }
 
         private void btnCoinReceived_Click(object sender, EventArgs e)
         {
-            btnEnterCarPark.Visible= true;
+            btnPark.Visible= true;
             btnCoinReceived.Visible= false;
-        }
-
-        private void btnEnterCarPark_Click(object sender, EventArgs e)
-        {
-
-            btnEnterCarPark.Enabled = false;
-            grbxParking.Visible = true;
-
         }
 
         private void btnFloor1Parking_Click(object sender, EventArgs e)
@@ -83,8 +76,8 @@ namespace CarParkPrototype
                 }
 
                 grbxFloor1.Visible = true;
+                btnSelectSpace.Enabled = false;
                 grbxFloor2.Visible = false;
-                btnConfirmSpace.Visible = false;
                 grbxParking.Enabled = false;
 
             }
@@ -121,7 +114,7 @@ namespace CarParkPrototype
 
                 grbxFloor1.Visible = false;
                 grbxFloor2.Visible = true;
-                btnConfirmSpace.Visible = false;
+                btnSelectSpace.Visible = false;
                 grbxParking.Enabled = false;
 
             }
@@ -133,13 +126,13 @@ namespace CarParkPrototype
         {
 
             parkingSpace = 1;
-            if (enterLeave)
+            if (!enterLeave)
             {
-                selectSpaceFloor1();
+                selectLeavingFloor1();
             }
             else
             {
-                selectLeavingFloor1();
+                selectSpaceFloor1();
             }
             btnFloor1.BackColor = Color.RoyalBlue;
 
@@ -192,22 +185,30 @@ namespace CarParkPrototype
             if (!enterLeave)
             {
                 if (parkingSpace > 0)
-                    btnConfirmSpace.Visible = true;
-                grbxParking.Enabled = true;
+                {
+                    MessageBox.Show("Enter you passcode to leave", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    grbxPin.Visible = true;
+                    btnFindCar.Enabled = false;
+                    grbxLeaving.Enabled = false;
+                }
+                    
             }
             else
             {
                 if (parkingSpace > 0)
-                    btnConfirmLeave.Visible = true;
-                grbxLeaving.Enabled = true;
+                {
+                    MessageBox.Show("Select a passcode, or fingerprint scanner to secure your car", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    grbxSecurity.Visible = true;
+                    grbxLeaving.Enabled = true;
+                }
+
             }
         }
         private void btnConfirmSpace_Click(object sender, EventArgs e)
         {
-            btnConfirmSpace.Enabled = false;
-            grbxParking.Enabled = false;
-            btnPark.Visible = true;
-            grbxSecurity.Visible = true;
+            MessageBox.Show("Enter floor 1 for secure parking or \nEnter floor 2 for standard parking", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnSelectSpace.Enabled = false;
+            grbxParking.Visible = true;
         }
         private void btnPark_Click(object sender, EventArgs e)
         {
@@ -231,7 +232,7 @@ namespace CarParkPrototype
 
         private void btnLeave_Click(object sender, EventArgs e)
         {
-            btnPayForParking.Visible = true;
+            btnFindCar.Visible = true;
             btnLeave.Visible = false;
             enterLeave = false;
             btnEnter.Visible = false;
@@ -239,7 +240,7 @@ namespace CarParkPrototype
 
         private void btnPayForParking_Click(object sender, EventArgs e)
         {
-            btnFindCar.Visible = true;
+            btnLeaveSpace.Visible = true;
             btnPayForParking.Enabled = false;
         }
 
@@ -247,7 +248,6 @@ namespace CarParkPrototype
         {
             btnFindCar.Enabled = false;
             grbxLeaving.Visible = true;
-            btnPayForParking.Enabled = false;
         }
         private void selectLeavingFloor1()
         {
@@ -320,11 +320,6 @@ namespace CarParkPrototype
             grbxLeaving.Enabled = false;
         }
 
-        private void btnConfirmLeave_Click(object sender, EventArgs e)
-        {
-            btnConfirmLeave.Enabled = false;
-            btnLeaveSpace.Visible = true;
-        }
 
         private void btnLeaveSpace_Click(object sender, EventArgs e)
         {
@@ -339,13 +334,8 @@ namespace CarParkPrototype
                     floor2[parkingSpace - 5] = true;
                     
                 }
-               
-               
-            
-            
                 btnLeaveCarPark.Visible = true;
                 btnLeaveSpace.Enabled = false;
-            
         }
 
         private void btnLeaveCarPark_Click(object sender, EventArgs e)
@@ -378,10 +368,8 @@ namespace CarParkPrototype
             btnArriveAtCarPark.Visible = false;
             btnCoinReceived.Enabled = true;
             btnCoinReceived.Visible = false;
-            btnEnterCarPark.Enabled = true;
-            btnEnterCarPark.Visible = false;
-            btnConfirmSpace.Enabled = true;
-            btnConfirmSpace.Visible = false;
+            btnSelectSpace.Enabled = true;
+            btnSelectSpace.Visible = false;
             grbxParking.Visible = false;
             grbxParking.Enabled = true;
             grbxLeaving.Visible = false;
@@ -392,8 +380,6 @@ namespace CarParkPrototype
             btnPayForParking.Visible = false;
             btnFindCar.Enabled = true;
             btnFindCar.Visible = false;
-            btnConfirmLeave.Enabled = true;
-            btnConfirmLeave.Visible = false;
             btnLeaveSpace.Enabled = true;
             btnLeaveSpace.Visible = false;
             btnLeaveCarPark.Enabled = true;
@@ -402,125 +388,138 @@ namespace CarParkPrototype
 
         private void btnPasscode_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Enter A Pin Number To Secure Your Car", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grbxPin.Visible = true;
         }
 
-
-
-
-
         private void btnPin1_Click(object sender, EventArgs e)
         {
-         
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-            
             lblPin.Text += "1";
-
-
-            lblPin.Text = Keypad.btnPin1();
-
+            butno = 1;
         }
 
         private void btnPin2_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "2";
+            butno = 2;
         }
 
         private void btnPin3_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "3";
+            butno = 3;
         }
 
         private void btnPin4_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "4";
+            butno = 4;
         }
 
         private void btnPin5_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "5";
+            butno = 5;
         }
 
         private void btnPin6_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "6";
+            butno = 6;
         }
 
         private void btnPin7_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "7";
+            butno = 7;
         }
 
         private void btnPin8_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "8";
+            butno = 8;
         }
 
         private void btnPin9_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "9";
+            butno = 9;
         }
 
         private void btnPin0_Click(object sender, EventArgs e)
         {
-            if (lblPin.Text == "Please Enter Your Pin:")
-            {
+            if (lblPin.Text == "Please Enter Your Pin:"){
                 lblPin.Text = "";
             }
-
             lblPin.Text += "0";
         }
 
         private void btnPinEnter_Click(object sender, EventArgs e)
         {
-            int pass = Convert.ToInt32(lblPin.Text);
 
-            lblTest.Text = Convert.ToString(pass);
+            if (!enterLeave)
+            {
+                if (passPark1 == Convert.ToInt32(lblPin.Text))
+                {
+                    MessageBox.Show("Pin Correct", "Exit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnPayForParking.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Pin, Try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                passPark1 = Convert.ToInt32(lblPin.Text);
+                lblTest.Text = Convert.ToString(passPark1); // Just for testing purposes can be deleted later.
+                lblPin.Text = "Please Enter Your Pin:";
+                btnCoinReceived.Visible = true;
 
+            }
+
+
+            btnSelectSpace.Visible = false;
+            grbxPin.Visible = false;
+            grbxSecurity.Visible = false;
+            grbxParking.Visible = false;
             
+        }
+
+        private void btnFloor2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPinBack_Click(object sender, EventArgs e)
+        {
 
 
 
